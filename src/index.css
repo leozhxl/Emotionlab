@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-dark-900 text-white font-body antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-dark-900 font-semibold px-8 py-4 rounded-xl
+           hover:bg-amber transition-all duration-300
+           shadow-lg shadow-primary/20 hover:shadow-amber/30
+           active:scale-95 transform;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-primary/50 text-primary font-semibold px-8 py-4 rounded-xl
+           hover:bg-primary/10 hover:border-amber hover:text-amber transition-all duration-300;
+  }
+
+  .card {
+    @apply bg-dark-700/50 backdrop-blur-sm border border-dark-500/50 rounded-2xl
+           hover:border-primary/30 transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply hover:transform hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+  }
+
+  .section-subtitle {
+    @apply text-lg md:text-xl text-gray-400 max-w-2xl font-body;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-primaryDark to-primary bg-clip-text text-transparent;
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(212, 255, 26, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(212, 255, 26, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .glow-text {
+    text-shadow: 0 0 30px rgba(212, 255, 26, 0.4), 0 0 60px rgba(212, 255, 26, 0.2);
+  }
+
+  .glow-border {
+    box-shadow: 0 0 20px rgba(212, 255, 26, 0.2), inset 0 0 20px rgba(212, 255, 26, 0.05);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4FF1A;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF9500;
+}
+
+/* Wave animation */
+@keyframes waveform {
+  0%, 100% { transform: scaleY(0.2); }
+  50% { transform: scaleY(1); }
+}
+
+.wave-bar {
+  animation: waveform 1s ease-in-out infinite;
+  transform-origin: bottom;
+}
+
+/* Timeline connector animation */
+@keyframes growLine {
+  from { transform: scaleX(0); transform-origin: left; }
+  to { transform: scaleX(1); transform-origin: left; }
+}
+
+.timeline-line {
+  animation: growLine 1.5s ease-out forwards;
+}
+
+/* Ticker pause on hover */
+.ticker-wrapper:hover .ticker-track {
+  animation-play-state: paused;
+}
